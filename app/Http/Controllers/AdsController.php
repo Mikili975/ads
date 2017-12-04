@@ -50,7 +50,7 @@ class AdsController extends Controller
 
         //Mail::to($user)->send(new PostCreated($post));
 
-        //redirektuj na taj novi post
+        //redirektuj na taj novi post i jos da vidimo nesto
         return redirect('/');
 
     }
