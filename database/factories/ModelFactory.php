@@ -35,13 +35,23 @@ $factory->define(App\User::class, function (Faker $faker) {
 $factory->define(App\Ad::class, function (Faker $faker) {
 
     $title = $faker->sentence();
+    $nullOrPrice = random_int(0,1);
+
+    if ($nullOrPrice == 0)
+    {
+        $price = null;
+    }
+    else
+    {
+        $price = $faker->numberBetween(10,1000);
+    }
 
     return [
         'category_id' => random_int(1,7),
         'title' => $title,
         'body' => $faker->paragraph(),
         'slug' => str_slug($title),
-        'price' => $faker->numberBetween(10,1000),
+        'price' => $price,
     ];
 
 });
