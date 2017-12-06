@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Ad;
 use App\Category;
+use App\Favourite;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,7 +17,13 @@ class AdsController extends Controller
 
     public function home()
     {
-        $ads = Ad::with(['user','category'])->paginate(10);
+        $ads = Ad::with(['user','category', 'favourite'])->paginate(10);
+
+        //dd($ads->user->id);
+
+        $favourite = Favourite::where('user_id',$ads->user->id);
+
+        //dd($ads);
 
         return view('ads.home', compact('ads'));
     }

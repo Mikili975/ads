@@ -15,21 +15,22 @@ class Ad extends Model
      * @var array
      */
     protected $fillable = [
-        'title', 'body', 'slug', 'price', 'user_id', 'category_id'//turi ovde jos sta treba, metnem te!!!
+        'title', 'body', 'slug', 'price', 'user_id', 'category_id'
     ];
 
     public function user()
     {
-
         return $this->belongsTo(User::class);
-
     }
 
     public function category()
     {
-
         return $this->belongsTo(Category::class);
+    }
 
+    public function favourite()
+    {
+        return $this->belongsToMany(Favourite::class);
     }
 
 }

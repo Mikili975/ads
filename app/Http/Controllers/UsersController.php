@@ -38,4 +38,9 @@ class UsersController extends Controller
 
         return view('users.all', compact('ads'));
     }
+
+    public function addToFavourite()
+    {
+        dd('tu sam');
+    }
 }
