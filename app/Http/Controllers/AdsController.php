@@ -17,13 +17,8 @@ class AdsController extends Controller
 
     public function home()
     {
-        $ads = Ad::with(['user','category', 'favourite'])->paginate(10);
+        $ads = Ad::with(['user','category'])->paginate(10);
 
-        //dd($ads->user->id);
-
-        $favourite = Favourite::where('user_id',$ads->user->id);
-
-        //dd($ads);
 
         return view('ads.home', compact('ads'));
     }

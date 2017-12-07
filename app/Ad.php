@@ -28,9 +28,9 @@ class Ad extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function favourite()
+    public function addedToFavourite()
     {
-        return $this->belongsToMany(Favourite::class);
+        return $this->belongsToMany(User::class, 'favourites');
     }
 
 }

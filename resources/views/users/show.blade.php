@@ -33,9 +33,13 @@
         City: {{$user->city}}
     </p>
 
-    <a href="/users/{{$user->url_name}}/all"><p>All ads posted by user</p></a>
+    <p>
+        <a href="/users/{{$user->url_name}}/all">All ads posted by user</a>
+    </p>
 
+    <p>
+        <a href="/users/{{$user->url_name}}/favourite">Favourite ads</a>
+    </p>
 
-    <p></p>
 
 @endsection

@@ -23,7 +23,9 @@ Route::post('/users/store', 'RegisterController@store');
 
 Route::get('/users/{slug}', 'UsersController@show');
 
-Route::get('/users/{id}/all', 'UsersController@allAdsByUser');
+Route::get('/users/{urlName}/all', 'UsersController@allAdsByUser');
+
+Route::get('/users/{urlName}/favourite', 'UsersController@favouriteAdsByUser');
 
 Route::get('/logout', 'LoginController@logout');
 

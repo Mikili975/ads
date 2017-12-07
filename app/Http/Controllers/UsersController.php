@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use PhpParser\Node\Stmt\Echo_;
 
 class UsersController extends Controller
 {
@@ -15,7 +16,9 @@ class UsersController extends Controller
 
     public function showProfile()
     {
-        $user = Auth::user();
+        $user = Auth::user();//->with('ads','adToFavourite');
+
+        //dd($user);
 
         $userAds = $user->ads;
 
@@ -25,7 +28,13 @@ class UsersController extends Controller
     public function show($urlName)
     {
 
-        $user = User::where('url_name',$urlName)->first();
+        $user = User::where('url_name',$urlName)->with('ads','addToFavourite')->first();
+
+//        foreach ($user->addToFavourite as $userAd) {
+//
+//            dd($userAd);
+//
+//        }
 
         return view('users.show', compact('user'));
     }
@@ -37,6 +46,15 @@ class UsersController extends Controller
         //dd($ads);
 
         return view('users.all', compact('ads'));
+    }
+
+    public function favouriteAdsByUser($urlName)
+    {
+        $userWithFavouriteAds = User::where('url_name',$urlName)->with('addToFavourite')->first();
+
+        //dd($userWithFavouriteAds);
+
+        return view('/users/favourite', compact('userWithFavouriteAds'));
     }
 
     public function addToFavourite()
