@@ -39,4 +39,4 @@ Route::post('/ads/store', 'AdsController@store');
 
 Route::get('/ads/{slug}', 'AdsController@show');
 
-Route::post('/users/favourite', 'UsersController@addToFavourite');
+Route::post('/users/addToFavourite', 'UsersController@addToFavourite');

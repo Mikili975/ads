@@ -16,5 +16,11 @@
             @endif
 
         </nav>
+
+        @if(Auth::user())
+        <div>
+            <p>Logged as <a href="/users/{{Auth::user()->url_name}}">{{Auth::user()->first_name.'  '.Auth::user()->last_name}}</a></p>
+        </div>
+        @endif
     </div>
 </div>

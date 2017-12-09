@@ -59,6 +59,6 @@ class UsersController extends Controller
 
     public function addToFavourite()
     {
-        dd('tu sam');
+        dd(request('user'));
     }
 }
