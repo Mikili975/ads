@@ -35,7 +35,7 @@
     <p>
         Added by
 
-        @if($ad->user->id == Auth::user()->id)
+        @if(Auth::user() && ($ad->user->id == Auth::user()->id))
             <a href="/users/{{$ad->user->url_name}}">me</a>
         @else
             <a href="/users/{{$ad->user->url_name}}">{{$ad->user->first_name}}  {{$ad->user->last_name}}</a>
@@ -44,23 +44,13 @@
 
     </p>
 
-    <form action="/users/addToFavourite" method="post">
-        <div>
-            {{ csrf_field() }}
-        </div>
+    @if(Auth::user())
 
-        {{--<div>
-            <input type="hidden" name="user" value={{$ad->user}}>
-        </div>    --}}
+    <div>
+        <a href="/users/addToFavourite/{{$ad->slug}}">Add to favourite</a>
+    </div>
 
-        @if(Auth::user() && !(Auth::user()->id == $ad->user->id))
+    @endif
 
-        <div>
-            <button type="submit">Add to favourite</button>
-        </div>
-
-        @endif
-
-    </form>
 
 @endsection

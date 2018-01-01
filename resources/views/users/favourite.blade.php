@@ -14,7 +14,7 @@
         </a>
     </h6>
 
-    @foreach($userWithFavouriteAds->addToFavourite as $ad)
+    @foreach($userWithFavouriteAds->favourite as $ad)
 
         <li>
 

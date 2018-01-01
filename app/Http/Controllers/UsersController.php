@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Ad;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -28,7 +29,7 @@ class UsersController extends Controller
     public function show($urlName)
     {
 
-        $user = User::where('url_name',$urlName)->with('ads','addToFavourite')->first();
+        $user = User::where('url_name',$urlName)->with('ads','favourite')->first();
 
 //        foreach ($user->addToFavourite as $userAd) {
 //
@@ -50,15 +51,22 @@ class UsersController extends Controller
 
     public function favouriteAdsByUser($urlName)
     {
-        $userWithFavouriteAds = User::where('url_name',$urlName)->with('addToFavourite')->first();
+        $userWithFavouriteAds = User::where('url_name',$urlName)->with('favourite')->first();
 
         //dd($userWithFavouriteAds);
 
         return view('/users/favourite', compact('userWithFavouriteAds'));
     }
 
-    public function addToFavourite()
+    public function addToFavourite($adSlug)
     {
-        dd(request('user'));
+
+        $ad = Ad::where('slug', $adSlug)->first();
+
+        //dd($ad);
+
+        Auth::user()->addAdToFavourite($ad);
+
+        //return redirect('/');
     }
 }

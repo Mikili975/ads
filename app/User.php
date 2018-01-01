@@ -72,8 +72,15 @@ class User extends Authenticatable
 
     }
 
-    public function addToFavourite()
+    public function favourite()
     {
         return $this->belongsToMany(Ad::class, 'favourites');
+    }
+
+    public function addAdToFavourite($ad)
+    {
+        //dd($ad->id);
+
+        $this->favourite()->attach($ad->id);
     }
 }
