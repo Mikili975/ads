@@ -15,12 +15,33 @@
                 <a class="nav-link" href="/login">Login</a>
             @endif
 
+            {{--search box--}}
+
+            <div class="search-container">
+                <form action="/search" method="get" class="form-signin">
+                    {{--{{ csrf_field() }}--}}
+                    <input type="text" placeholder="Search.." name="key">
+                    <button type="submit">search</button>
+                </form>
+            </div>
+
         </nav>
 
         @if(Auth::user())
         <div>
             <p>Logged as <a href="/users/{{Auth::user()->url_name}}">{{Auth::user()->first_name.'  '.Auth::user()->last_name}}</a></p>
         </div>
+        @endif
+    </div>
+    <div>
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
         @endif
     </div>
 </div>

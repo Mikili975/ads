@@ -77,6 +77,11 @@ class User extends Authenticatable
         return $this->belongsToMany(Ad::class, 'favourites');
     }
 
+    public function hasFavoured($ad)
+    {
+        return false;
+    }
+
     public function addAdToFavourite($ad)
     {
         //dd($ad->id);

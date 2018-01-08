@@ -47,7 +47,11 @@
     @if(Auth::user())
 
     <div>
-        <a href="/users/addToFavourite/{{$ad->slug}}">Add to favourite</a>
+        @if(!Auth::user()->hasFavoured($ad)) {{--ovo moras da definises na user modelu - informaciju izvuces iz baze!!!--}}
+            <a href="/users/add-to-favourites/{{$ad->slug}}">Add to favourite</a>
+        @else
+            <a href="/users/remove-from-favourites/{{$ad->slug}}">Remove from favourite</a>
+        @endif
     </div>
 
     @endif

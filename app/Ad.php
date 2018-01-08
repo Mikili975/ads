@@ -2,12 +2,13 @@
 
 namespace App;
 
+use Laravel\Scout\Searchable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Model;
 
 class Ad extends Model
 {
-    use Notifiable;
+    use Notifiable, Searchable;
 
     /**
      * The attributes that are mass assignable.
@@ -32,5 +33,4 @@ class Ad extends Model
     {
         return $this->belongsToMany(User::class, 'favourites');
     }
-
 }

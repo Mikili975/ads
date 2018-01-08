@@ -16,7 +16,7 @@ class AdsController extends Controller
 
     public function home()
     {
-        $ads = Ad::with(['user','category'])->paginate(10);
+        $ads = Ad::with(['user', 'category'])->paginate(10);
 
 
         return view('ads.home', compact('ads'));
@@ -24,12 +24,12 @@ class AdsController extends Controller
 
     public function index()
     {
-        $ads = Ad::with(['user','category'])->paginate(10);
+        $ads = Ad::with(['user', 'category'])->paginate(10);
 
         return view('ads.index', compact('ads'));
     }
 
-    public function create ()
+    public function create()
     {
 
         $categories = Category::all();
@@ -38,12 +38,12 @@ class AdsController extends Controller
 
     }
 
-    public function store (Request $request)
+    public function store(Request $request)
     {
 
-        $this->validate( $request, ['title' => 'required',
-                                    'body' => 'required'
-                                    ] );
+        $this->validate($request, ['title' => 'required',
+            'body' => 'required'
+        ]);
 
         $user = Auth::user();
 
@@ -56,12 +56,32 @@ class AdsController extends Controller
 
     }
 
-    public function show ($slug)
+    public function show($slug)
     {
 
-        $ad = Ad::where('slug',$slug)->first();
+        $ad = Ad::where('slug', $slug)->first();
 
         return view('ads.show', compact('ad'));
 
+    }
+
+    public function search()
+    {
+
+        if (!request()->key) {
+            $errorMessage = 'Do not leave search field empty!!!';
+        }
+
+        $ads = Ad::where([
+            ['title', 'LIKE', '%' . request()->key . '%'],
+            ['body', 'LIKE', '%' . request()->key . '%'],
+        ])->get();
+
+        if ($ads->isEmpty()) {
+            $errorMessage = 'Your search did not get any results!!!';
+        }
+
+
+        return view('ads.search-results', compact('ads', 'errorMessage'));
     }
 }

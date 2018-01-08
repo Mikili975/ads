@@ -21,7 +21,7 @@ Route::get('/users/profile', 'UsersController@showProfile');
 
 Route::post('/users/store', 'RegisterController@store');
 
-Route::get('/users/addToFavourite/{urlName}', 'UsersController@addToFavourite');
+Route::get('/users/add-to-favourites/{urlName}', 'UsersController@addToFavourite');
 
 Route::get('/users/{urlName}', 'UsersController@show');
 
@@ -40,3 +40,5 @@ Route::get('/ads/create', 'AdsController@create');
 Route::post('/ads/store', 'AdsController@store');
 
 Route::get('/ads/{slug}', 'AdsController@show');
+
+Route::get('/search', 'AdsController@search');

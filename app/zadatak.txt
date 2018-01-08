@@ -24,6 +24,7 @@ Oglasnik (Ads)
 
 - lista svih oglasa (10 po strani) (mogu svi da vide)
 	- pretraga oglasa po title-u i text-u
+	- prikaz rezultata title je link i prvih nekoliko reci oglasa
 
 - u sidebar pokazati oglase iz istog grada kao i oglas koji se posmatra, ali da se ne prikazuje
  oglas koji se trenutno gleda
