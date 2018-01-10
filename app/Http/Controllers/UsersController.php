@@ -67,6 +67,18 @@ class UsersController extends Controller
 
         Auth::user()->addAdToFavourite($ad);
 
-        //return redirect('/');
+        return back();
+    }
+
+    public function removeFromFavourite($adSlug)
+    {
+
+        $ad = Ad::where('slug', $adSlug)->first();
+
+        //dd($ad);
+
+        Auth::user()->removeAdFromFavourite($ad);
+
+        return back();
     }
 }

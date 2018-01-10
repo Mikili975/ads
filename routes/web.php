@@ -23,6 +23,8 @@ Route::post('/users/store', 'RegisterController@store');
 
 Route::get('/users/add-to-favourites/{urlName}', 'UsersController@addToFavourite');
 
+Route::get('/users/remove-from-favourites/{urlName}', 'UsersController@removeFromFavourite');
+
 Route::get('/users/{urlName}', 'UsersController@show');
 
 Route::get('/users/{urlName}/all', 'UsersController@allAdsByUser');

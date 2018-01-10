@@ -69,7 +69,9 @@ class AdsController extends Controller
     {
 
         if (!request()->key) {
+
             $errorMessage = 'Do not leave search field empty!!!';
+
         }
 
         $ads = Ad::where([

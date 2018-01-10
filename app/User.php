@@ -8,6 +8,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
 class User extends Authenticatable
 {
@@ -74,12 +75,27 @@ class User extends Authenticatable
 
     public function favourite()
     {
-        return $this->belongsToMany(Ad::class, 'favourites');
+        return $this->belongsToMany(Ad::class, 'favourites')->withPivot('ad_id', 'user_id');
     }
 
     public function hasFavoured($ad)
     {
-        return false;
+        $isFavoured = DB::table('favourites')
+            ->where([
+                ['ad_id', $ad->id],
+                ['user_id', $this->id]
+            ])
+            ->get();
+
+        if ($isFavoured->isEmpty())
+        {
+            return false;
+        }
+
+        else
+        {
+            return true;
+        }
     }
 
     public function addAdToFavourite($ad)
@@ -87,5 +103,14 @@ class User extends Authenticatable
         //dd($ad->id);
 
         $this->favourite()->attach($ad->id);
+
+    }
+
+    public function removeAdFromFavourite($ad)
+    {
+        //dd($ad->id);
+
+        $this->favourite()->detach($ad->id);
+
     }
 }
