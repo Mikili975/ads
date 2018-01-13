@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Ad extends Model
 {
-    use Notifiable, Searchable;
+    use Notifiable;
 
     /**
      * The attributes that are mass assignable.

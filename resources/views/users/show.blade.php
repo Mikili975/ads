@@ -34,11 +34,13 @@
     </p>
 
     <p>
-        @if (!(Auth::user()->id == $user->id))
-            @if(!Auth::user()->areWeFriends($user))
-                <a href="/users/{{$user->url_name}}/like">Like user</a>
-            @else
-                <a href="/users/{{$user->url_name}}/unlike">Unlike user</a>
+        @if(Auth::user())
+            @if (!(Auth::user()->id == $user->id))
+                @if(!Auth::user()->areWeFriends($user))
+                    <a href="/users/{{$user->url_name}}/like">Like user</a>
+                @else
+                    <a href="/users/{{$user->url_name}}/unlike">Unlike user</a>
+                @endif
             @endif
         @endif
     </p>
