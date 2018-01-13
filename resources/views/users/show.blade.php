@@ -34,6 +34,16 @@
     </p>
 
     <p>
+        @if (!(Auth::user()->id == $user->id))
+            @if(!Auth::user()->areWeFriends($user))
+                <a href="/users/{{$user->url_name}}/like">Like user</a>
+            @else
+                <a href="/users/{{$user->url_name}}/unlike">Unlike user</a>
+            @endif
+        @endif
+    </p>
+
+    <p>
         <a href="/users/{{$user->url_name}}/all">All ads posted by user</a>
     </p>
 

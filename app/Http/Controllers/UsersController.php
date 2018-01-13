@@ -81,4 +81,22 @@ class UsersController extends Controller
 
         return back();
     }
+
+    public function likeUser($urlName)
+    {
+        $user = User::where('url_name', $urlName)->first();
+
+        Auth::user()->friendUser($user);
+
+        return back();
+    }
+
+    public function unlikeUser($urlName)
+    {
+        $user = User::where('url_name', $urlName)->first();
+
+        Auth::user()->unfriendUser($user);
+
+        return back();
+    }
 }

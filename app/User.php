@@ -80,37 +80,90 @@ class User extends Authenticatable
 
     public function hasFavoured($ad)
     {
-        $isFavoured = DB::table('favourites')
-            ->where([
-                ['ad_id', $ad->id],
-                ['user_id', $this->id]
-            ])
-            ->get();
-
-        if ($isFavoured->isEmpty())
-        {
-            return false;
-        }
-
-        else
-        {
-            return true;
-        }
+        return !(DB::table('favourites')
+            //$this->favourite()
+            ->where('ad_id', $ad->id)
+            ->where('user_id', $this->id)
+            ->get()
+            ->isEmpty());
     }
 
     public function addAdToFavourite($ad)
     {
-        //dd($ad->id);
+        if (!$this->hasFavoured($ad))
+        {
+            $this->favourite()->attach($ad->id);
+        }
+        else
+        {
+            $messages = [
+                'alreadyFavoured' => 'Ad is already added to favourite'
+            ];
 
-        $this->favourite()->attach($ad->id);
-
+            return redirect()->back()->with('messages', $messages);
+        }
     }
 
     public function removeAdFromFavourite($ad)
     {
-        //dd($ad->id);
+        if ($this->hasFavoured($ad))
+        {
+            $this->favourite()->detach($ad->id);
+        }
+        else
+        {
+            $messages = [
+                'notFavoured' => 'Ad has not been liked yet'
+            ];
 
-        $this->favourite()->detach($ad->id);
+            return redirect()->back()->with('messages', $messages);
+        }
+    }
 
+    public function friends()
+    {
+        return $this->belongsToMany(User::class, 'likes', 'liking_user_id', 'liked_user_id');
+    }
+
+    public function areWeFriends($user)
+    {
+        return !(DB::table('likes')
+            //$this->friends()
+            ->where('liking_user_id', $this->id)
+            ->where('liked_user_id', $user->id)
+            ->get()
+            ->isEmpty());
+    }
+
+    public function friendUser($user)
+    {
+        if (!$this->areWeFriends($user))
+        {
+            $this->friends()->attach($user->id);
+        }
+        else
+        {
+            $messages = [
+                'alreadyLiked' => "You've already liked this user"
+            ];
+
+            return redirect()->back()->with('messages', $messages);
+        }
+    }
+
+    public function unfriendUser($user)
+    {
+        if ($this->areWeFriends($user))
+        {
+            $this->friends()->detach($user->id);
+        }
+        else
+        {
+            $messages = [
+                'notLiked' => "You haven't liked this user yet!!!"
+            ];
+
+            return redirect()->back()->with('messages', $messages);
+        }
     }
 }

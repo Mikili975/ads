@@ -29,6 +29,10 @@ Route::get('/users/{urlName}', 'UsersController@show');
 
 Route::get('/users/{urlName}/all', 'UsersController@allAdsByUser');
 
+Route::get('/users/{urlName}/like', 'UsersController@likeUser');
+
+Route::get('/users/{urlName}/unlike', 'UsersController@unlikeUser');
+
 Route::get('/users/{urlName}/favourite', 'UsersController@favouriteAdsByUser');
 
 Route::get('/logout', 'LoginController@logout');

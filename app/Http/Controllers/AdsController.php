@@ -61,7 +61,7 @@ class AdsController extends Controller
 
         $ad = Ad::where('slug', $slug)->first();
 
-        return view('ads.show', compact('ad'));
+        return view('ads.show', compact('ad', 'messages'));
 
     }
 
