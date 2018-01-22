@@ -8,6 +8,10 @@
 
 @section('content')
 
+    <p>
+        Latest 10 ads
+    </p>
+
     @foreach($ads as $ad)
 
         <li>
@@ -41,15 +45,16 @@
             </p>
 
             <p>
-                Location: <a href="/location/{{$ad->user->city}}">{{$ad->user->city}}</a>
+                Location: {{$ad->user->city}}
             </p>
 
             <p>
-                <a href="/category/{{str_slug($ad->category->name)}}">{{$ad->category->name}}</a>
+                <a href="/categories/{{str_slug($ad->category->name)}}">{{$ad->category->name}}</a>
             </p>
 
         </li>
 
     @endforeach
+
 
 @endsection

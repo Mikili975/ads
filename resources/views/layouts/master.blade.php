@@ -32,7 +32,7 @@
 
 @if(session('error'))
 
-    <div class="alert-warning" role="alert">
+    <div class="alert-danger" role="alert">
 
         {{session('error')}}
 

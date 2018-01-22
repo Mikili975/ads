@@ -41,11 +41,11 @@
             </p>
 
             <p>
-                Location: {{$ad->user->city}}
+                Location: <a href="/location/{{$ad->user->city}}">{{$ad->user->city}}</a>
             </p>
 
             <p>
-                <a href="/categories/{{str_slug($ad->category->name)}}">{{$ad->category->name}}</a>
+                <a href="/categories/{{$ad->category->slug}}">{{$ad->category->name}}</a>
             </p>
 
         </li>

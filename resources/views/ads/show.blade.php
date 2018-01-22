@@ -19,6 +19,10 @@
     </p>
 
     <p>
+        <a href="/categories/{{$ad->category->slug}}">{{$ad->category->name}}</a>
+    </p>
+
+    <p>
         {{$ad->user->city}}
     </p>
 

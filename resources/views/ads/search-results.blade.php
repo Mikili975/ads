@@ -12,7 +12,9 @@
 
     @if(!empty($errorMessage))
 
-        {{$errorMessage}}
+        <div class="alert-danger" role="alert">
+            {{$errorMessage}}
+        </div>
 
     @else
 

@@ -57,8 +57,4 @@
         @endif
     </div>--}}
 
-    <div>
-        @php(dd(session()))
-            @endphp
-    </div>
 </div>

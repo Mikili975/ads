@@ -129,10 +129,19 @@ class AdsController extends Controller
 
         else
         {
-            session()->flash('error', 'You are not authorized to do this shit!!!');
+            session()->flash('error', 'This is not your ad!!!');
 
             return redirect('/');
         }
+    }
+
+    public function category($slug)
+    {
+        $category = Category::where('slug', $slug)->first();
+
+        $ads = Ad::where('category_id', $category->id)->with('user', 'category')->paginate(10);
+
+        return view('ads/category', compact('ads'));
     }
 
 }

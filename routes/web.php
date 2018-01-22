@@ -60,3 +60,5 @@ Route::get('/users/{urlName}/all', 'UsersController@allAdsByUser');
 Route::get('/ads/{slug}', 'AdsController@show');
 
 Route::get('/search', 'AdsController@search');
+
+Route::get('/categories/{slug}', 'AdsController@category');

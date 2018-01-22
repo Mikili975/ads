@@ -14,7 +14,7 @@ Oglasnik (Ads)
 
 - single ad page (mogu svi da vide)
 	- title, date, text, category, [city, price], author (first name, last name)
-	*- klik na category -> posebna strana sa oglasima iz te kategorije
+	- klik na category -> posebna strana sa oglasima iz te kategorije
 	- klik na authora ->profil autora
 	- dodati i ikonicu za 'favourite add' - ovo se prkazuje samo ulogovanim user-ima.
 		klik na ikonicu dodaje oglas u moje 'omiljene oglase'; drugi klik -> brise iz omiljenih
