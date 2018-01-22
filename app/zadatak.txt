@@ -14,8 +14,8 @@ Oglasnik (Ads)
 
 - single ad page (mogu svi da vide)
 	- title, date, text, category, [city, price], author (first name, last name)
-	- klik na category -> posebna strana sa oglasima iz te kategorije
-	- klik na authora ->profil qutora
+	*- klik na category -> posebna strana sa oglasima iz te kategorije
+	- klik na authora ->profil autora
 	- dodati i ikonicu za 'favourite add' - ovo se prkazuje samo ulogovanim user-ima.
 		klik na ikonicu dodaje oglas u moje 'omiljene oglase'; drugi klik -> brise iz omiljenih
 
@@ -31,7 +31,7 @@ Oglasnik (Ads)
 
 - kad gledas svoj oglas kao registrovanii user da pise umesto by Ime Prezime, by me!
 
-- lin k ka edit da imas samo0 na svojim oglasimaq
+- lin k ka edit da imas samo0 na svojim oglasima
 
 Create a 8 digit number using only the digits 4,4,3,3,2,2,1 and 1.
 	You have to make sure the ones are separated by one digit,

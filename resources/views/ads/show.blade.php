@@ -8,6 +8,8 @@
 
 @section('content')
 
+@include('layouts.partials.sidebar')
+
     <p>
         {{$ad->title}}
     </p>
@@ -47,11 +49,21 @@
     @if(Auth::user())
 
     <div>
-        @if(!Auth::user()->hasFavoured($ad)) {{--ovo moras da definises na user modelu - informaciju izvuces iz baze!!!--}}
-            <a href="/users/add-to-favourites/{{$ad->slug}}">Add to favourite</a>
-        @else
-            <a href="/users/remove-from-favourites/{{$ad->slug}}">Remove from favourite</a>
+        @if(!(Auth::user() == $ad->user))
+            @if(!Auth::user()->hasFavoured($ad))
+                <a href="/users/add-to-favourites/{{$ad->slug}}">Add to favourite</a>
+            @else
+                <a href="/users/remove-from-favourites/{{$ad->slug}}">Remove from favourite</a>
+            @endif
         @endif
+    </div>
+
+    <div>
+        <p>
+            @if ((Auth::user()->id == $ad->user->id))
+                <a href="/ads/{{$ad->slug}}/edit">Edit</a>
+            @endif
+        </p>
     </div>
 
     @endif

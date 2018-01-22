@@ -30,6 +30,16 @@
 
 @endif
 
+@if(session('error'))
+
+    <div class="alert-warning" role="alert">
+
+        {{session('error')}}
+
+    </div>
+
+@endif
+
 @include('layouts.partials.navbar')
 
 <div class="container">

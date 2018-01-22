@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Http\Controllers\AdsController;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Notifications\Notifiable;
@@ -71,6 +72,21 @@ class User extends Authenticatable
 
         ]);
 
+    }
+
+    public function updateAd($ad) {
+
+        Ad::where('slug', $ad->slug)->update([
+
+            'category_id' => request('categoryId'),
+            'title' => request('title'),
+            'slug' => str_slug(request('title')),
+            'body' => request('body'),
+            'price' => request('price'),
+
+        ]);
+
+        return $ad->fresh(['user']);
     }
 
     public function favourite()
@@ -166,4 +182,5 @@ class User extends Authenticatable
             return redirect()->back()->with('messages', $messages);
         }
     }
+
 }

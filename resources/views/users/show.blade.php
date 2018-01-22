@@ -8,11 +8,6 @@
 
 @section('content')
 
-    {{--@php--}}
-    {{--dd($user,$userAds);--}}
-    {{--@endphp--}}
-
-
     <p>
         User profile
     </p>
