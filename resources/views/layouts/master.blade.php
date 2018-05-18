@@ -62,6 +62,8 @@
 
 </div><!-- /.container -->
 
+{{--<script src="/js/test.js"></script>--}}
+<script src="/js/proba.js"></script>
 
 </body>
 </html>

@@ -23,7 +23,9 @@ class UsersController extends Controller
 
         $userAds = $user->ads;
 
-        return view('users.profile', compact ('user', 'userAds'));
+        //return view('users.profile', compact ('user', 'userAds'));
+
+        return $user;
     }
 
     public function show($urlName)
@@ -98,6 +100,10 @@ class UsersController extends Controller
         Auth::user()->unfriendUser($user);
 
         return back();
+    }
+
+    public function getTestUser($urlName) {
+        return User::where('url_name', $urlName)->first();
     }
 
 }

@@ -20,8 +20,8 @@
             <div class="search-container">
                 <form action="/search" method="get" class="form-signin">
                     {{--{{ csrf_field() }}--}}
-                    <input type="text" placeholder="Search.." name="key">
-                    <button type="submit">search</button>
+                    <input id="searchfield" type="text" placeholder="Search.." name="key">
+                    <button id="searchbutton" type="submit">search</button>
                 </form>
             </div>
 

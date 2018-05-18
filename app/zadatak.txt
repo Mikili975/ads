@@ -38,3 +38,11 @@ Create a 8 digit number using only the digits 4,4,3,3,2,2,1 and 1.
 	the twos are separated by two digits
 	the threes are separated with three digits
 	and the fours are separated by four digits
+
+- Kad hover-ujes preko linkova da pocrvene
+
+- Kad korisnik postuje prazno polje search da js odreaguje, a ne da se ide na server
+    *treba na search button dodati neki id da bi mogao da ga nadjem sa getElementById
+    *Dodati listener za click i handler
+    *Funkcija preventDefault e.target.preventDefault()
+    *Provravam da li u input polju ima nesto - google... Ako ima nesto onda "ponistim" preventDefault, a ako je prazno alert - google
