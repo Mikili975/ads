@@ -16,7 +16,7 @@
                 <a href="/ads/{{$ad->slug}}">{{$ad->title}}</a>
             </p>
 
-            <p>
+            <p id="user">
                 By <a href="/users/{{$ad->user->url_name}}">{{$ad->user->first_name.' '.$ad->user->last_name}}</a>
             </p>
 
@@ -53,5 +53,7 @@
     @endforeach
 
     {{$ads->links()}}
+
+    <script src="/js/proba.js"></script>
 
 @endsection
