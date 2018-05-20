@@ -223,3 +223,9 @@ body {
     background-color: #f5f5f5;
     border-radius: .25rem;
 }
+
+.appended {
+    padding:1rem;
+    background-color: yellow;
+    border-radius: .25rem;
+}

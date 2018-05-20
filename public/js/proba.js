@@ -1,37 +1,50 @@
-const users = Array.from(document.querySelectorAll('#user'));
+const users = Array.from(document.querySelectorAll('.user'));
 
 function makeHtml(e) {
 
     const url = 'http://127.0.0.1:8000/api/users/' +
-        e.relatedTarget.childNodes[3].childNodes[1].href.split('/')[4];
+        e.toElement.children["0"].href.split('/')[4];
 
     fetch(url)   // Call the fetch function passing the url of the API as a parameter
-        .then((result) => result.json() /*console.log(result)*/ )
+        .then((result) => result.json())
         .then(data =>  {
 
             const name = data.first_name + ' ' + data.last_name;
             const city = data.city;
 
-            const user = document.querySelector('#user');
 
             const div = document.createElement('div');
             div.className = 'appended';
+            div.backgroundColor = 'yelow';
 
-            const p = document.createElement('p');
-            p.className = 'fullname';
-            p.innerHTML = name;
+            const pName = document.createElement('p');
+            pName.className = 'fullname';
+            pName.innerHTML = name;
+
+            const pCity = document.createElement('p');
+            pCity.className = 'city';
+            pCity.innerHTML = city;
 
 
-            div.appendChild(p);
+            div.appendChild(pName);
+            div.appendChild(pCity);
 
-            user.appendChild(div);
+            this.appendChild(div);
 
         })
         .catch(data => console.log(data));}
 
 function removeHtml() {
-    const user = document.querySelector('.appended');
-    user.remove();
+    const html = document.querySelector('.appended');
+    html.remove();
+}
+
+function testMouseEnter(e) {
+    console.log(e.toElement.children["0"].href.split('/')[4]);
+}
+
+function testMouseLeave(e) {
+    console.log('leaved!!!')
 }
 
 users.forEach(user => user.addEventListener('mouseenter', makeHtml));
