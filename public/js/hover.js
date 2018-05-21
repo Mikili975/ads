@@ -60,15 +60,3 @@ userLinks.forEach(user => user.addEventListener('mouseleave', removeHtml));
 // 5. Pokupi pri ucitavanju stranice sve sto ti treba u jednu promenljivu, pa se onda zajebavaj i ne salji upit bazi sto puta...
 // 6. Dodaj ssh key i autorizuj ga
 
-// [core]
-// repositoryformatversion = 0
-// filemode = true
-// bare = false
-// logallrefupdates = true
-//     [remote "origin"]
-// url = git@github.com:Mikili975/ads.git
-// fetch = +refs/heads/*:refs/remotes/origin/*
-// [branch "master"]
-// 	remote = origin
-// 	merge = refs/heads/master
-
