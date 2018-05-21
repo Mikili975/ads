@@ -56,7 +56,7 @@
 
     @endforeach
 
-    <script src="/js/proba.js"></script>
+    <script src="/js/hover.js"></script>
 
 
 @endsection

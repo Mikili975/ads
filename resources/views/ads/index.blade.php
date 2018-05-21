@@ -16,8 +16,8 @@
                 <a href="/ads/{{$ad->slug}}">{{$ad->title}}</a>
             </p>
 
-            <p class="user">
-                By <a href="/users/{{$ad->user->url_name}}">{{$ad->user->first_name.' '.$ad->user->last_name}}</a>
+            <p>
+                By <a class="user" href="/users/{{$ad->user->url_name}}">{{$ad->user->first_name.' '.$ad->user->last_name}}</a>
             </p>
 
             <p>
@@ -54,6 +54,6 @@
 
     {{$ads->links()}}
 
-    <script src="/js/proba.js"></script>
+    <script src="/js/hover.js"></script>
 
 @endsection
